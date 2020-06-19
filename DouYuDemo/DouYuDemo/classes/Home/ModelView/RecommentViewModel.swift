@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RecommentViewModel{
     //懒加载属性
@@ -33,7 +34,7 @@ extension RecommentViewModel{
             //2.根据data该key，获取数组
             guard let dataArray = resultDict["data"] as? [[String : NSObject]] else {return}
             //3.遍历字典,并且转成模型对象
-            
+
             //3.1设置组的属性
             self.bigDataGroup.tag_name = "热门"
             self.bigDataGroup.icon_name = "home_header_hot"
@@ -42,6 +43,18 @@ extension RecommentViewModel{
                 let anchor = AnchorModel(dict: dict)
                 self.bigDataGroup.anchors.append(anchor)
             }
+            
+//            let json = JSON(result)
+//            guard let dataArray = json["data"].array else {return}
+//            //3.1设置组的属性
+//            self.bigDataGroup.tag_name = "热门"
+//            self.bigDataGroup.icon_name = "home_header_hot"
+//            //3.2 获取主播数据
+//            for dict in dataArray{
+//                let anchor = AnchorModel(dict: dict.dictionary!)
+//                self.prettyGroup.anchors.append(anchor)
+//            }
+            
             //3.2 离开组
             dGroup.leave()
             
@@ -50,14 +63,14 @@ extension RecommentViewModel{
         //4.请求第二部分推荐数据
         dGroup.enter()//进入组
         NetworkTools.requestData(type: .GET, URLString: "http://capi.douyucdn.cn/api/v1/getVerticalRoom", parameters: parameters) { (result) in
-            print("颜值得到的是",result)
+            //print("颜值得到的是",result)
             //1.将result转成字典类型
             guard let resultDict = result as? [String : NSObject] else{return}
             //2.根据data该key，获取数组
             guard let dataArray = resultDict["data"] as? [[String : NSObject]] else {return}
-            
+
             //3.遍历字典,并且转成模型对象
-            
+
             //3.1 设置组的属性
             self.prettyGroup.tag_name = "颜值"
             self.prettyGroup.icon_name = "home_header_phone"
@@ -66,6 +79,22 @@ extension RecommentViewModel{
                 let anchor = AnchorModel(dict: dict)
                 self.prettyGroup.anchors.append(anchor)
             }
+            
+            
+           let json = JSON(result)
+           print("得到的数据是：",json)
+//            guard let dataArray = json["data"].array else {return}
+//            //3.1 设置组的属性
+//            self.prettyGroup.tag_name = "颜值"
+//            self.prettyGroup.icon_name = "home_header_phone"
+//            //3.2 获取主播数据
+//            for dict in dataArray{
+//                let anchor = AnchorModel(dict: dict.dictionary!)
+//                self.prettyGroup.anchors.append(anchor)
+//            }
+            
+            
+            
             //3.3 离开组
             dGroup.leave()
         }
@@ -78,13 +107,22 @@ extension RecommentViewModel{
             guard let resultDict = result as? [String : NSObject] else{return}
             //2.根据data该key，获取数组
             guard let dataArray = resultDict["data"] as? [[String : NSObject]] else {return}
-            
+
             //3.遍历数组，获取字典，并且将字典转成模型对象
             for dict in dataArray{
                 let group = AnchorGroup(dict: dict)
                 self.anchorGroups.append(group)
             }
             
+            
+//            let json = JSON(result)
+//
+//            guard let dataArray = json["data"].array else {return}
+//            print("得到的数据是：",dataArray[0]["tag_name"])
+//            for dict in dataArray{
+//                let group = AnchorGroup(dict: dict.dictionary!)
+//                self.anchorGroups.append(group)
+//            }
             //3.4 离开组
             dGroup.leave()
         }

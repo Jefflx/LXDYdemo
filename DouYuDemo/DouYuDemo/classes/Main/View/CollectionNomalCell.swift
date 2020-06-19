@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Kingfisher
 
 class CollectionNomalCell: UICollectionViewCell {
     
-@IBOutlet weak var ImgView: UIImageView!
+@IBOutlet weak var iconimageView: UIImageView!
 
 @IBOutlet weak var nickNameLabel: UILabel!
     
@@ -32,9 +34,13 @@ class CollectionNomalCell: UICollectionViewCell {
             }else{
                 onlineStr = "\(anchor.online)在线"
             }
+            //房间名称
+            roomNameLabel.text = anchor.room_name
             onlineBtn.setTitle(onlineStr, for: .normal)
             //2.昵称显示
             nickNameLabel.text = anchor.nickname
+            guard let iconURL = URL(string: anchor.vertical_src) else {return}
+            iconimageView.kf.setImage(with: iconURL)
            
         }
     }

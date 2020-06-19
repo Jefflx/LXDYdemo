@@ -17,7 +17,7 @@ class PrettyCell: UICollectionViewCell {
     
 @IBOutlet weak var nicknameLabel: UILabel!
 
-    @IBOutlet weak var cityBtn: UIButton!
+@IBOutlet weak var cityBtn: UIButton!
     
     
     // 定义模型属性
@@ -38,8 +38,8 @@ class PrettyCell: UICollectionViewCell {
             //3.所在城市
             cityBtn.setTitle(anchor.anchor_city, for: .normal)
             //4.设置封面图片
-//            guard let iconURL = NSURL(string: anchor.vertical) else {return}
-//            iconimageView.kf.setImage(with: (iconURL as! Resource))
+            guard let iconURL = URL(string: anchor.vertical_src) else {return}
+            iconimageView.kf.setImage(with: iconURL)
         }
     }
     

@@ -71,7 +71,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="210" height="108"/>
             <connections>
-                <outlet property="ImgView" destination="6zO-j7-o4V" id="J9J-tN-Uo7"/>
+                <outlet property="iconimageView" destination="6zO-j7-o4V" id="3Om-Th-vvo"/>
                 <outlet property="nickNameLabel" destination="NtX-ea-iDS" id="FlO-IT-eJr"/>
                 <outlet property="onlineBtn" destination="EBT-Et-2KJ" id="l4V-y4-p2V"/>
                 <outlet property="roomNameLabel" destination="F4U-kN-lCN" id="sfa-hZ-aer"/>

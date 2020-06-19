@@ -13,6 +13,7 @@ private let kItemW = (kScreenW - 3 * kItemMargin) / 2
 private let kNormalItemH = kItemW * 3 / 4
 private let kPrettyItemH = kItemW * 4 / 3
 private let kHeaderViewH : CGFloat = 50
+private let kCycleViewH = kScreenW * 3 / 8
 
 private let kNormalCellID = "kNormalCellID"
 private let kPrettyCellID = "kPrettyCellID"
@@ -43,6 +44,12 @@ class RecommentVC: UIViewController {
         collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewID)
         return collectionView
     }()
+    
+    private lazy var cycleview : RecommendCycleView = {[weak self] in
+        let view = RecommendCycleView.recommendCycleView()
+        view.frame = CGRect(x: 0, y: -kCycleViewH, width: kScreenW, height: kCycleViewH)
+        return view
+    }()
 
     
 //推荐
@@ -66,15 +73,12 @@ extension RecommentVC{
     private func setupUI(){
         //1.添加collectionview
         view.addSubview(collectionView)
+        //2.将CycleView添加到collectionview
+        collectionView.addSubview(cycleview)
     }
 }
 
-//请求数据
-extension RecommentVC{
-    private func loadData(){
-        //NetworkTools.requestData(type: .POST, URLString: <#T##String#>, parameters: <#T##[String : Any]?#>, finishedCallback: <#T##(Any) -> ()#>)
-    }
-}
+
 
 //UICollectionViewDataSource的数据源协议
 extension RecommentVC: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -94,14 +98,13 @@ extension RecommentVC: UICollectionViewDataSource,UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // 1.取出模型对象
-      
         let group = recommendVM.anchorGroups[indexPath.section]
         let anchor = group.anchors[indexPath.item]
         
         //2.取出cell
         if indexPath.section == 1{
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellID, for: indexPath)as! PrettyCell
-            cell.anchor = anchor
+          cell.anchor = anchor
           return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellID, for: indexPath)as! CollectionNomalCell

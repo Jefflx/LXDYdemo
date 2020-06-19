@@ -40,6 +40,9 @@
 		5181DFB6247B954A003AC722 /* AnchorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181DFB5247B954A003AC722 /* AnchorGroup.swift */; };
 		5181DFB8247BB3F3003AC722 /* AnchorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5181DFB7247BB3F3003AC722 /* AnchorModel.swift */; };
 		5181DFBC247BBEBA003AC722 /* LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5181DFBB247BBEBA003AC722 /* LogCategory.m */; };
+		51FF5FA02485EA8200D6E4F0 /* CollectionBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FF5F9F2485EA8200D6E4F0 /* CollectionBaseCell.swift */; };
+		51FF5FA22485EFCC00D6E4F0 /* RecommendCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FF5FA12485EFCC00D6E4F0 /* RecommendCycleView.swift */; };
+		51FF5FA6248626B400D6E4F0 /* RecommendCycleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51FF5FA5248626B400D6E4F0 /* RecommendCycleView.xib */; };
 		7DC0A7F13BB07D58BB92F210 /* Pods_DouYuDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4612009073A6AF87AADAD919 /* Pods_DouYuDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,9 @@
 		5181DFB7247BB3F3003AC722 /* AnchorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorModel.swift; sourceTree = "<group>"; };
 		5181DFBA247BBEBA003AC722 /* LogCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogCategory.h; sourceTree = "<group>"; };
 		5181DFBB247BBEBA003AC722 /* LogCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogCategory.m; sourceTree = "<group>"; };
+		51FF5F9F2485EA8200D6E4F0 /* CollectionBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseCell.swift; sourceTree = "<group>"; };
+		51FF5FA12485EFCC00D6E4F0 /* RecommendCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCycleView.swift; sourceTree = "<group>"; };
+		51FF5FA5248626B400D6E4F0 /* RecommendCycleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCycleView.xib; sourceTree = "<group>"; };
 		634B65A8F80E52B3FBBF74F6 /* Pods-DouYuDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DouYuDemo.release.xcconfig"; path = "Target Support Files/Pods-DouYuDemo/Pods-DouYuDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7A6C0B168E92C3341FD9264E /* Pods_DouYuDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DouYuDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8D8B6C00075C3C071FF89E /* Pods-DouYuDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DouYuDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DouYuDemoTests/Pods-DouYuDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +260,8 @@
 			children = (
 				515FB5CC24779FD8009B796C /* CollectionHeaderView.swift */,
 				515FB5CD24779FD8009B796C /* CollectionHeaderView.xib */,
+				51FF5FA12485EFCC00D6E4F0 /* RecommendCycleView.swift */,
+				51FF5FA5248626B400D6E4F0 /* RecommendCycleView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +275,7 @@
 				515FB5D12477A331009B796C /* CollectionNomalCell.xib */,
 				515FB5D42477A91B009B796C /* PrettyCell.swift */,
 				515FB5D52477A91B009B796C /* PrettyCell.xib */,
+				51FF5F9F2485EA8200D6E4F0 /* CollectionBaseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -427,6 +436,7 @@
 				51647D532466A324002D2FB9 /* Follow.storyboard in Resources */,
 				515FB5D72477A91B009B796C /* PrettyCell.xib in Resources */,
 				51647D4B24669BD5002D2FB9 /* Live.storyboard in Resources */,
+				51FF5FA6248626B400D6E4F0 /* RecommendCycleView.xib in Resources */,
 				51647D552466A332002D2FB9 /* Profile.storyboard in Resources */,
 				51647D592466A34C002D2FB9 /* Main.storyboard in Resources */,
 				51647D572466A33E002D2FB9 /* Home.storyboard in Resources */,
@@ -513,6 +523,7 @@
 			files = (
 				516EC1F224760B2D00AA0B4B /* PageTitleView.swift in Sources */,
 				5173051524750CFE00E2F44F /* LiveVC.swift in Sources */,
+				51FF5FA02485EA8200D6E4F0 /* CollectionBaseCell.swift in Sources */,
 				5173051324750CC900E2F44F /* ProfileVC.swift in Sources */,
 				515FB5CB24776A06009B796C /* RecommentVC.swift in Sources */,
 				515FB5D62477A91B009B796C /* PrettyCell.swift in Sources */,
@@ -522,6 +533,7 @@
 				5162971D2468DA59000DA88F /* HomeVC.swift in Sources */,
 				515FB5D92477D682009B796C /* NetworkTools.swift in Sources */,
 				5181DFB4247B71FA003AC722 /* NSDate-Extension.swift in Sources */,
+				51FF5FA22485EFCC00D6E4F0 /* RecommendCycleView.swift in Sources */,
 				515FB5CE24779FD8009B796C /* CollectionHeaderView.swift in Sources */,
 				516EC1F4247613AF00AA0B4B /* Common.swift in Sources */,
 				515FB5D22477A331009B796C /* CollectionNomalCell.swift in Sources */,
