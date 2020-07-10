@@ -12,6 +12,7 @@ import SwiftyJSON
 class RecommentViewModel{
     //懒加载属性
     lazy var anchorGroups : [AnchorGroup] = [AnchorGroup]()
+    lazy var cycleModels : [CycleModel] = [CycleModel]()
     private lazy var bigDataGroup : AnchorGroup = AnchorGroup()
     private lazy var prettyGroup : AnchorGroup = AnchorGroup()
     
@@ -19,6 +20,26 @@ class RecommentViewModel{
 
 //发送网络请求
 extension RecommentViewModel{
+    //请求无限轮播数据
+    func requestCycleData(finishCallBack:@escaping()->()){
+        NetworkTools.requestData(type: .GET, URLString: "http://www.douyutv.com/api/v1/slide/6", parameters: ["version" : "2.300"]) { (result) in
+            let json = JSON(result)
+            print("无限轮播的数据是：",json)
+            //1.将result转成字典类型
+            guard let resultDict = result as? [String : NSObject] else{return}
+            //2.根据data该key，获取数组
+            guard let dataArray = resultDict["data"] as? [[String : NSObject]] else {return}
+            self.cycleModels.removeAll()
+            //3.字典转模型
+            for dict in dataArray{
+                let cycle = CycleModel.init(dict: dict)
+                self.cycleModels.append(cycle)
+            }
+            
+            finishCallBack()
+        }
+    }
+    //请求推荐数据
     func requestData(finishCallBack:@escaping()->()){
         //0.定义参数
         let parameters = ["limit" : "4","offset" : "0","time" : NSDate.getCurrentTime()]
@@ -82,7 +103,7 @@ extension RecommentViewModel{
             
             
            let json = JSON(result)
-           print("得到的数据是：",json)
+           //print("得到的数据是：",json)
 //            guard let dataArray = json["data"].array else {return}
 //            //3.1 设置组的属性
 //            self.prettyGroup.tag_name = "颜值"
